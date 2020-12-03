@@ -13,11 +13,11 @@ public class Puzzle3 {
 
     public static void main(String args[]) {
         Puzzle3 puzzle = new Puzzle3();
-        puzzle.solution_case1(puzzle.getInputsFromFile("input/input3_1.txt"), 3, 1);
-        puzzle.solution_case2(puzzle.getInputsFromFile("input/input3_1.txt"));
+        // puzzle.solution_case1(puzzle.getInputsFromFile("input/input3_1.txt"), 3, 1);
+        // puzzle.solution_case2(puzzle.getInputsFromFile("input/input3_1.txt"));
 
-        puzzle.solution_case1(puzzle.getInputsFromFile("input/input3.txt"), 3, 1);
-        puzzle.solution_case2(puzzle.getInputsFromFile("input/input3.txt"));
+        // puzzle.solution_case1(puzzle.getInputsFromFile("input/input3.txt"), 3, 1);
+         puzzle.solution_case2(puzzle.getInputsFromFile("input/input3.txt"));
     }
 
     private String[] getInputsFromFile(String fileName) {
@@ -47,20 +47,23 @@ public class Puzzle3 {
         int treeCount = 0;
         int i = down;
         int turnPoint = 0;
-        int lineCount = input.length;
-        while (i < lineCount) {
+
+        while (i < input.length) {
             String line = input[i];
-            int j = 0;
-            while (j < lineCount / 1.5) {
-                line = line + input[i];
-                j++;
-            }
-            char[] objs = line.toCharArray();
+            int j = line.length();
+           
+            //point to check in the line
             turnPoint = turnPoint + right;
-            char obj = objs[turnPoint];
-            if (obj == '#') {
-                treeCount++;
+
+            //extend the pattern
+            while (j <= turnPoint) {
+                line = line + line;
+                j = line.length();
             }
+
+            if (line.toCharArray()[turnPoint] == '#') 
+                treeCount++;
+            
             i = i + down;
         }
         System.out.println("Tree Count : " + treeCount);
@@ -68,15 +71,13 @@ public class Puzzle3 {
     }
 
     private long solution_case2(String[] input) {
-        long output = 0;
-        Puzzle3 puzzle = new Puzzle3();
-        long count0 = puzzle.solution_case1(input, 1, 1);
-        long count1 = puzzle.solution_case1(input, 3, 1);
-        long count2 = puzzle.solution_case1(input, 5, 1);
-        long count3 = puzzle.solution_case1(input, 7, 1);
-        long count4 = puzzle.solution_case1(input, 1, 2);
 
-        output = count0 * count1 * count2 * count3 * count4;
+        Puzzle3 puzzle = new Puzzle3();
+        long output = puzzle.solution_case1(input, 1, 1);
+        output*= puzzle.solution_case1(input, 3, 1);
+        output*= puzzle.solution_case1(input, 5, 1);
+        output*= puzzle.solution_case1(input, 7, 1);
+        output*= puzzle.solution_case1(input, 1, 2);
         System.out.println("case2 output ::" + output);
         // code for case2
         return output;
