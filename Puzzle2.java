@@ -1,8 +1,8 @@
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
 --- Day 2: Password Philosophy ---
@@ -28,13 +28,13 @@ How many passwords are valid according to their policies?
 public class Puzzle2 {
 
     public static void main(String args[]){
-        final String[] input1 = {"1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"};
+        //final String[] input1 = {"1-3 a: abcde", "1-3 b: cdefg", "2-9 c: ccccccccc"};
         Puzzle2 p2  = new Puzzle2();
-        // p2.getCorrectPasswords(input1);
-        // p2.getCorrectPasswords((String[])p2.getInputsFromFile("puzzle2_input.txt"));
+        p2.getCorrectPasswords(p2.getInputsFromFile("input/input2_1.txt"));
+        p2.getCorrectPasswords(p2.getInputsFromFile("input2_1.txt"));
 
-        p2.getCorrectPasswords_case2(input1);
-        p2.getCorrectPasswords_case2((String[])p2.getInputsFromFile("puzzle2_input.txt"));
+        p2.getCorrectPasswords_case2(p2.getInputsFromFile("input/input2.txt"));
+        p2.getCorrectPasswords_case2(p2.getInputsFromFile("input/input2.txt"));
     }
 
     private String[] getInputsFromFile(String fileName){

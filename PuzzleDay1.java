@@ -1,4 +1,3 @@
-
 public class PuzzleDay1 {
 
     // private int[] input = {1721, 979, 366, 299, 675, 1456};
@@ -18,6 +17,7 @@ public class PuzzleDay1 {
 
     public static void main(String args[]) {
         PuzzleDay1 day1 = new PuzzleDay1();
+        System.out.println(day1.getOutput());
         System.out.println(day1.getOutput2());
     }
 
